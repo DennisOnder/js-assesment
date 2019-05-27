@@ -4,13 +4,20 @@ if (typeof define !== "function") {
 
 define(function() {
   return {
-    valueAtBit: function(num, bit) {},
+    valueAtBit: function(num, bit) {
+      const bin = num.toString(2);
+      return bit > bin.length
+        ? 0
+        : parseInt(bin.toString(2)[bin.length - bit], 10);
+    },
 
     base10: function(str) {
       return parseInt(str, 2);
     },
 
-    convertToBinary: function(num) {},
+    convertToBinary: function(num) {
+      return num.toString(2);
+    },
 
     multiply: function(a, b) {
       return (a * Math.round(b * 10)) / 10;

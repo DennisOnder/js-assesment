@@ -6,7 +6,9 @@ define(function() {
   return {
     alterContext: function(fn, obj) {},
 
-    alterObjects: function(constructor, greeting) {},
+    alterObjects: function(constructor, greeting) {
+      return greeting;
+    },
 
     iterate: function(obj) {
       return Object.keys(obj).map(key => `${key}: ${obj[key]}`);
