@@ -20,7 +20,8 @@ define(function() {
     },
 
     multiply: function(a, b) {
-      return (a * Math.round(b * 10)) / 10;
+      const precision = b.toString().split(".")[1].length;
+      return parseFloat((a * b).toPrecision(precision));
     }
   };
 });
