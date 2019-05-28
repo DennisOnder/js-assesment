@@ -12,11 +12,15 @@ define(function() {
       return /([a-zA-Z]).*?\1/.test(str);
     },
 
-    endsWithVowel: function(str) {},
+    endsWithVowel: function(str) {
+      return /[aeiou|AEIOU]$/.test(str);
+    },
 
     captureThreeNumbers: function(str) {},
 
-    matchesPattern: function(str) {},
+    matchesPattern: function(str) {
+      return /\b\d{3}[-.]?\d{3}[-.]?\d{4}\b/.test(str);
+    },
     isUSD: function(str) {}
   };
 });

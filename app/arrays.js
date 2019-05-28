@@ -19,7 +19,9 @@ define(function() {
       return arr;
     },
 
-    removeWithoutCopy: function(arr, item) {},
+    removeWithoutCopy: function(arr, item) {
+      return arr.slice().filter(v => v !== item);
+    },
 
     append: function(arr, item) {
       // arr.push(item);

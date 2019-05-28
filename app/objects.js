@@ -4,11 +4,11 @@ if (typeof define !== "function") {
 
 define(function() {
   return {
-    alterContext: function(fn, obj) {},
-
-    alterObjects: function(constructor, greeting) {
-      return greeting;
+    alterContext: function(fn, obj) {
+      return fn.call(obj);
     },
+
+    alterObjects: function(constructor, greeting) {},
 
     iterate: function(obj) {
       return Object.keys(obj).map(key => `${key}: ${obj[key]}`);
