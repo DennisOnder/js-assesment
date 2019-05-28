@@ -19,13 +19,20 @@ define(function() {
     },
 
     makeClosures: function(arr, fn) {
-      function closure() {
-        return arr.map(v => fn(v));
+      let result = [];
+      for (let i = 0; i < arr.length; i++) {
+        result.push(function() {
+          return fn(arr[i]);
+        });
       }
-      closure();
+      return result;
     },
 
-    partial: function(fn, str1, str2) {},
+    partial: function(fn, str1, str2) {
+      return function() {
+        return fn(str1, str2, "!!!");
+      };
+    },
 
     useArguments: function(...args) {
       return args.reduce((acc, curr) => (acc += curr), 0);

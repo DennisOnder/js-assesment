@@ -4,9 +4,10 @@ if (typeof define !== "function") {
 
 define(["jquery"], function($) {
   return {
-    async: function(value) {},
+    async: function(value) {
+      return Promise.resolve(value);
+    },
 
-    manipulateRemoteData: function(url) {
-
+    manipulateRemoteData: function(url) {}
   };
 });

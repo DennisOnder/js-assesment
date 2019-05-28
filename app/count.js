@@ -4,6 +4,7 @@ if (typeof define !== "function") {
 
 define(function() {
   return {
-    count: function(start, end) {}
+    count: function(start, end) {},
+    cancel: function() {}
   };
 });

@@ -16,7 +16,9 @@ define(function() {
     },
 
     convertToBinary: function(num) {
-      return num.toString(2);
+      const bin = num.toString(2);
+      if (bin.length === 8) return bin;
+      return `0${bin}`;
     },
 
     multiply: function(a, b) {
