@@ -29,8 +29,8 @@ define(function() {
     },
 
     partial: function(fn, str1, str2) {
-      return function() {
-        return fn(str1, str2, "!!!");
+      return function(ending) {
+        return fn(str1, str2, ending);
       };
     },
 
