@@ -16,13 +16,16 @@ define(function() {
       return /[aeiou|AEIOU]$/.test(str);
     },
 
-    captureThreeNumbers: function(str) {},
+    captureThreeNumbers: function(str) {
+      const results = /\d{3}/.exec(str);
+      return results ? results[0] : false;
+    },
 
     matchesPattern: function(str) {
       return /\b\d{3}[-.]?\d{3}[-.]?\d{4}\b/.test(str);
     },
     isUSD: function(str) {
-      return /^\$?[0-9]{1,3}(?:,|.?[0-9]{3})*\.[0-9]{2}$/.test(str);
+      return /^\$\d{1,3}(,\d{3})*(\.\d{2})?$/.test(str);
     }
   };
 });
