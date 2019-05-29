@@ -4,7 +4,18 @@ if (typeof define !== "function") {
 
 define(function() {
   return {
-    count: function(start, end) {},
-    cancel: function() {}
+    count: function(start, end) {
+      let timeout;
+      function startCounter() {
+        console.log(start++);
+        if (start <= end) timeout = setTimeout(startCounter, 100);
+      }
+      startCounter();
+      return {
+        cancel: function() {
+          timeout && clearTimeout(timeout);
+        }
+      };
+    }
   };
 });

@@ -38,10 +38,35 @@ define(function() {
       return args.reduce((acc, curr) => (acc += curr), 0);
     },
 
-    callIt: function(fn) {},
+    callIt: function(fn) {
+      const args = Array.prototype.slice.call(arguments, 1, arguments.length);
+      fn.apply(null, args);
+    },
 
-    partialUsingArguments: function(fn) {},
+    partialUsingArguments: function(fn) {
+      const args = Array.prototype.slice.call(arguments, 1, arguments.length);
+      return function() {
+        const newArgs = args.concat(Array.prototype.slice.call(arguments));
+        return fn.apply(null, newArgs);
+      };
+    },
 
-    curryIt: function(fn) {}
+    curryIt: function(fn) {
+      function useArgs(fn2, args) {
+        return fn2.apply(null, args);
+      }
+
+      function argsAccumulator(accumulated, expected) {
+        return function(currentArg) {
+          accumulated.push(currentArg);
+          const allArgumentsProvided = accumulated.length === expected;
+          if (allArgumentsProvided) {
+            return useArgs(fn, accumulated);
+          }
+          return argsAccumulator(accumulated, expected);
+        };
+      }
+      return argsAccumulator([], fn.length);
+    }
   };
 });
